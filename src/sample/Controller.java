@@ -4,9 +4,14 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -155,4 +160,18 @@ public class Controller {
     }
 
 
+    public void open(ActionEvent actionEvent) {
+        Parent root;
+
+        try {
+            root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("My new Window");
+            stage.setScene(new Scene(root, 450, 450));
+            stage.show();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
