@@ -103,8 +103,6 @@ public class Controller {
                 //avoiding duplicates in the arraylist
                 if(!names.contains(name)){
                     names.add(name);
-                }else if(!resultset.rowDeleted()){
-                    names.remove(name);
                 }
 
             }
@@ -141,6 +139,8 @@ public class Controller {
 
             //executing the statement
           status = preparedStatement.executeUpdate();
+          //remove the value from the array list
+          names.remove(name);
 
           if(status == 1){
               textLabel.setText("Name has been deleted successfully");
